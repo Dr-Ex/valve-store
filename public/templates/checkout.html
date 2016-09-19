@@ -1,0 +1,54 @@
+{% extends 'base-template.html' %}
+
+{% block content %}
+
+<h1>Checkout</h1>
+
+<form action="checkout" method="post" class="checkout">
+	<p>You have ordered {{ item['model_no'] }}. This costs ${{ "%.2f" % (item['price']/100) }} per item.</p>
+
+	<label class="checkout">Item Quantity</label>
+	<input class="checkout" name="purchase_qty" type="number" min="1" value="1" style="width: 20%">
+
+	<p>Please enter your payment and delivery information below.</p>
+
+
+	<label class="checkout">Full Name</label>
+	<input class="checkout" name="name" type="text">
+
+	<label class="checkout">Street Address</label>
+	<input class="checkout" name="street" type="text">
+
+	<label class="checkout">City</label>
+	<input class="checkout" name="city" type="text">
+
+	<label class="checkout">Postal Code</label>
+	<input class="checkout" name="postcode" type="text">
+
+	<label class="checkout">Country</label>
+	<input class="checkout" name="country" type="text">
+
+	<br><br><br><br>
+
+	<label class="checkout">Credit Card Number</label>
+	<input class="checkout" name="card_number" type="text">
+
+	<label class="checkout">Name on Card</label>
+	<input class="checkout" name="card_name" type="text">
+
+	<label class="checkout">Expiry Date</label>
+	<input class="checkout" name="card_expiry" type="text">
+
+	<label class="checkout">Security Number</label>
+	<input class="checkout" name="card_security" type="text">
+
+	<input class="checkout" type="hidden" name="item_id" value="{{ item.ID }}">
+
+	<br><br>
+	<div style="text-align: center; padding-bottom: 10px;">	
+		<input class="checkout" id="submit" type="submit" value="Make Payment" style="width: 20%; margin: 0 auto;">
+	</div>
+
+</form>
+
+{% endblock %}
